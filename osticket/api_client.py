@@ -49,13 +49,16 @@ class osTicket:
             'autorespond': autorespond,
             'attachments': attachments,
         }
-        response = requests.post(
-            '%(url)s/api/http.php/tickets.json' % {'url': self.url},
-            data = json.dumps(ticket),
-            headers = {
-                'X-API-Key': self.api_key
-            }
-        )
+        try:
+            response = requests.post(
+                '%(url)s/api/http.php/tickets.json' % {'url': self.url},
+                data = json.dumps(ticket),
+                headers = {
+                    'X-API-Key': self.api_key
+                }
+            )
+        except (requests.exceptions.MissingSchema) as e:
+            raise osTicketException(str(e))
         if response.status_code != 201:
             raise osTicketException(response.content.decode())
         return int(response.content)

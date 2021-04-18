@@ -36,7 +36,7 @@ setup(
     name='osticket',
 
     # Versions should comply with PEP440
-    version='0.2.0',
+    version='0.2.1',
 
     description='Python module for osTicket API',
     long_description="\n"+long_description,
