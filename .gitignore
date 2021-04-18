@@ -1,0 +1,5 @@
+dist
+osticket.api_client.egg-info
+osticket/__pycache__
+osticket/*.pyc
+
